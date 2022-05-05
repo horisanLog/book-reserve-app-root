@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Floor Map Example - Leaflet</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+</head>
+<body>
+<div id="map" style="width: 1000px; height: 500px;"></div>
+<script>
+    var map = L.map('map', {crs: L.CRS.Simple});
+    var bounds = [[0,0], [480,640]]; // ここでは画像の解像度をboundsに設定する。
+    L.imageOverlay('seat01.png', bounds).addTo(map); // 背景画像を設定する。
+    L.circle([170, 170], {color: 'green',radius: 10}).addTo(map)
+    .bindTooltip("test1", {permanent: true, direction: 'center'}).openTooltip()
+    .bindPopup("12:30-13:00");
+    L.circle([170, 290], {color: 'green',radius: 10}).addTo(map)
+    .bindTooltip("test2", {permanent: true, direction: 'center'}).openTooltip();
+    L.circle([170, 410], {color: 'green',radius: 10}).addTo(map)
+    .bindTooltip("test3", {permanent: true, direction: 'center'}).openTooltip();
+    L.circle([80, 170], {color: 'green',radius: 10}).addTo(map)
+    .bindTooltip("test4", {permanent: true, direction: 'center'}).openTooltip();
+    L.circle([80, 290], {color: 'green',radius: 10}).addTo(map)
+    .bindTooltip("test5", {permanent: true, direction: 'center'}).openTooltip();
+    L.circle([80, 410], {color: 'gray',radius: 10}).addTo(map)
+    .bindTooltip("test6", {permanent: true, direction: 'center'}).openTooltip();
+    map.fitBounds(bounds); // 描画領域を設定する。
+</script>
+</body>
+</html>
